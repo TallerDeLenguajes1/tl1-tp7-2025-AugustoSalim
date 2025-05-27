@@ -19,8 +19,7 @@ do
     string choice = Console.ReadLine();
     bool esNumeroEleccion = int.TryParse(choice, out eleccion);
 
-    //no anda bien el tema que no te pida un numero para limpiar o salir
-    if (eleccion != 0 || eleccion != 5)
+    if (eleccion == 1 || eleccion == 2 || eleccion == 3 || eleccion == 4)
     {
         Console.WriteLine("Ingrese el numero con el que quiere trabajar");
         string num = Console.ReadLine();
@@ -58,10 +57,16 @@ do
             break;
     }
 
-    //me tengo que fijar como hacer para que solo se pueda poner 1 o 0
+    int nEleccion = 3;
+
     Console.WriteLine(calculadora.Resultado.ToString());
-    Console.WriteLine("Quiere seguir? 1)- Si 0)- No");
-    choice = Console.ReadLine();
-    bool nuevaEleccion = int.TryParse(choice, out eleccion);
+    do
+    {
+        Console.WriteLine("Quiere seguir? 1)- Si 0)- No");
+        choice = Console.ReadLine();
+        bool nuevaEleccion = int.TryParse(choice, out nEleccion);
+    } while (nEleccion != 1 && nEleccion != 0);
+
+    eleccion = nEleccion;
 
 } while (eleccion != 0);
